@@ -1,0 +1,15 @@
+@media (max-width: 600px) {
+    .mobilesignupimage {
+       display: none !important;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    .computersignupimage {
+     display: flex !important;
+     justify-content: center !important;
+     align-items: center !important;
+    }
+}

@@ -1,0 +1,85 @@
+@media (max-width: 600px) {
+.c1 {
+    margin-top: 20px;
+}
+}
+
+
+
+
+@media print {
+
+    /* body * {
+        visibility: hidden;
+    } */
+    .divToPrint,
+    .divToPrint * {
+        visibility: visible;
+        /* display: flex; */
+        margin-top: 0px
+    }
+
+    .divToPrint {
+        /* position: absolute; */
+        left: 0;
+        top: 0;
+
+    }
+
+    
+    .rightone {
+        background: none;
+        margin-left: 0px;
+        /* height: 100% !important; */
+        width: 100%;
+
+
+    }
+    .omkar1,
+    .omkar2,
+    .omkar3,
+    .omkar4,
+    .omkar5,
+    .omkar7,
+    .omkar8 {
+        display: none !important;
+    }
+
+    .updateone,
+    .updatetwo
+    {
+        display: none !important;
+    }
+
+    .myonetab {
+        display: flex !important;
+    }
+
+    .companyname {
+        display: flex !important;
+    }
+    .mytwo {
+        display: flex !important;
+        justify-content: space-around;
+    }
+   
+
+    .printbutton {
+        display: none;
+    }
+
+    .loomstatusmain {
+        background: none;
+        margin-left: 0px;
+
+    }
+    .tablefontone {
+     font-size: 11px;
+    }
+
+
+   
+
+   
+
+}

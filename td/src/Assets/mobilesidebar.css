@@ -1,0 +1,9 @@
+.mobilelogo {
+    width: 200px;
+    height: 50px;
+    margin-left: 80px;
+}
+
+.btn-close {
+    margin-right: 5px !important;
+}

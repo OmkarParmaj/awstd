@@ -1,0 +1,356 @@
+import Computersidebar from "../sidebar/Computersidebar";
+import Mobilesidebar from "../sidebar/Mobilesidebar";
+import Header from "../sidebar/Header";
+import '../Assets/packingslip.css';
+import '../Assets/beaminwardreport.css';
+
+import React, { useEffect, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { FaDashcube } from "react-icons/fa6";
+import { TbReportAnalytics } from "react-icons/tb";
+import { CgInternal } from "react-icons/cg";
+import { FcPrint, FcEditImage, FcFullTrash, FcTemplate, FcFeedback } from "react-icons/fc";
+
+const BeamInwardReport = ({ isLoggedIn, setIsLoggedIn }) => {
+    const [searchInput, setSearchInput] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [data, setData] = useState([]);
+    const [records, setRecords] = useState([]);
+    const [modalId, setModalId] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [beamdrawn, setBeamdrawn] = useState(0);
+    const [beampending, setBeampending] = useState(0);
+    const recordsPerPage = 5;
+
+    useEffect(() => {
+        fetchdata();
+    }, []);
+
+    const fetchdata = () => {
+        axios.get('http://localhost:5000/beaminwardreport', { withCredentials: true })
+            .then((res) => {
+                setData(res.data);
+                setRecords(res.data);
+
+                let nullCount = 0;
+                let numberCount = 0;
+
+                res.data.forEach(info => {
+                    if (info.drawinprice > 1) {
+                        nullCount++;
+                    } else if (info.drawinprice < 1 && info.club === "nonclub") {
+                        numberCount++;
+                    }
+                });
+
+                setBeamdrawn(nullCount);
+                setBeampending(numberCount);
+            })
+            .catch((err) => {
+                console.error("Error fetching data:", err);
+            });
+    };
+
+    const handledelete = (DesignNo) => {
+        axios.delete(`http://localhost:5000/delete/${DesignNo}`, { withCredentials: true })
+            .then((res) => {
+                fetchdata();
+                setModalId(null);
+            })
+            .catch((err) => {
+                console.error("Error deleting record:", err);
+            });
+    };
+
+    const sendReconsile = (Designno, setno, remail) => {
+        setLoading(true);
+        const heyurl = `http://localhost:3000/reco?setno=${setno}&designno=${Designno}&recoemail=${remail}`;
+
+        axios.post("http://localhost:5000/mailreconsile", { heyurl }, { withCredentials: true })
+            .then(() => {
+                toast.success("Reconciliation slip sent", { position: "top-center", autoClose: 2000, closeOnClick: true });
+            })
+            .catch(error => {
+                toast.error("Failed to send reconciliation slip. Please check your Internet connection.", { position: "top-center", autoClose: 2000, closeOnClick: true });
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
+
+    const sendReconsile2 = (Designno, setno, remail) => {
+        setLoading(true);
+        const heyurl = `http://localhost:3000/setnumreco?setno=${setno}&designno=${Designno}&recoemail=${remail}`;
+
+        axios.post("http://localhost:5000/mailreconsile", { heyurl }, { withCredentials: true })
+            .then(() => {
+                toast.success("Reconciliation slip sent", { position: "top-center", autoClose: 2000, closeOnClick: true });
+            })
+            .catch(error => {
+                toast.error("Failed to send reconciliation slip. Please check your Internet connection.", { position: "top-center", autoClose: 2000, closeOnClick: true });
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
+
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    };
+
+    const Filter = (e) => {
+        const value = e.target.value.toLowerCase().trim();
+        setSearchInput(value);
+    };
+
+    useEffect(() => {
+        const filteredData = searchInput
+            ? data.filter(item => {
+                const inputs = searchInput.split('-').map(input => input.trim().toLowerCase());
+                return inputs.some(input => item.barcodevalue.toString().toLowerCase().includes(input));
+            })
+            : data;
+
+        const firstIndex = (currentPage - 1) * recordsPerPage;
+        const lastIndex = firstIndex + recordsPerPage;
+        setRecords(filteredData.slice(firstIndex, lastIndex));
+    }, [data, currentPage, searchInput]);
+
+    const nextPage = () => {
+        if (currentPage < Math.ceil(data.length / recordsPerPage)) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const changeCPage = (n) => {
+        setCurrentPage(n);
+    };
+
+    const prePage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    const firstPage = () => {
+        setCurrentPage(1);
+    };
+
+    const lastPage = () => {
+        setCurrentPage(Math.ceil(data.length / recordsPerPage));
+    };
+
+    const npage = Math.ceil(data.length / recordsPerPage);
+    const paginationStart = currentPage > 3 ? currentPage - 2 : 1;
+    const paginationEnd = paginationStart + 4 > npage ? npage : paginationStart + 4;
+    const numbers = Array.from({ length: paginationEnd - paginationStart + 1 }, (_, index) => paginationStart + index);
+
+    if (!isLoggedIn) {
+        return <Navigate to='/login' replace />;
+    }
+
+    return (
+        <>
+            <div className='container-fluid'>
+                {/* Modal for loading spinner */}
+                <div className={`modal ${loading ? 'show' : ''}`} style={{ display: loading ? 'block' : 'none' }} tabIndex="-1">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content" style={{ background: 'rgba(255, 255, 255, 0.7)' }}>
+                            <div className="modal-body" style={{ background: 'rgba(255, 255, 255, 0.7)' }}>
+                                <h4 className="text-center">Sending Reconciliation report</h4>
+                                <div className="text-center mt-4">
+                                    <div className="spinner-border text-primary" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='row'>
+                    <div id='sideone' className='col-12 col-sm-2 leftone  sideone'>
+                        <Computersidebar />
+                    </div>
+                    <div className='col-12 col-sm-10 rightone border border-1'>
+                        <Mobilesidebar />
+
+                        {/* Header section */}
+                        <Header setIsLoggedIn={setIsLoggedIn} />
+
+                        <div className='row pathing mt-4 mb-4'>
+                            <div className='col-12 col-sm-12 d-flex justify-content-start '>
+                                <span className="ms-4 mt-2">
+                                    <nav aria-label="breadcrumb">
+                                        <ol className="breadcrumb">
+                                            <li className="breadcrumb-item"><Link to='/dashboard'><FaDashcube className='me-2' />Home</Link></li>
+                                            <li className="breadcrumbrun-item"><TbReportAnalytics className='me-2' />Reports</li>
+                                            <li className="breadcrumb-item active" aria-current="page"><CgInternal className='me-2' />Beam inward report</li>
+                                        </ol>
+                                    </nav>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="row packingsliplabel">
+                            <div className="col-md-12 ">
+                                <div className="card shadow-sm m-3 border border-0">
+                                    <div className="car-body">
+                                        <div className="row mt-2 mb-2">
+                                            <div className="col-md-6">
+                                                <h4 className="text-start ms-4 mt-2">BEAM INWARD REPORT</h4>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <Link to="/datewisebeaminwardreport" className="packingslipbutton float-end">
+                                                    Datewise beaminward Report
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='row '>
+                            <div className='col-12 col-md-12 '>
+                                <div className='card m-3 border border-0 '>
+                                    <div className='card-body'>
+                                        <div className='row ms-4 me-4 mt-4 mb-4'>
+                                            <div className='col-md-12'>
+                                                <div className='d-flex align-items-center'>
+                                                    <input
+                                                        type='text'
+                                                        className='form-control me-3'
+                                                        placeholder='Search by Barcode'
+                                                        onChange={Filter}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='table-responsive'>
+                            <table className='table table-bordered table-hover'>
+                                <thead>
+                                    <tr>
+                                        <th className='align-middle'>Sno</th>
+                                        <th className='align-middle'>Date</th>
+                                        <th className='align-middle'> SetNo</th>
+                                        <th className='align-middle'>DesignNo</th>
+                                        <th className='align-middle'>DeliveryNo</th>
+                                        <th className='align-middle'>BeamQuality</th>
+                                        <th className='align-middle'>CustomerName</th>
+                                        <th className='align-middle'>ShadeNo</th>
+                                        <th className='align-middle'>BeamDrawn</th>
+                                        <th className='align-middle'>BeamPending</th>
+                                        <th className='align-middle'>Shortage</th>
+                                        <th className='align-middle'>PreviousAction</th>
+                                        <th className='align-middle'>Remarks</th>
+                                        <th className='align-middle'>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {records.map((item, index) => (
+                                        <tr key={index}>
+                                            <td>{index + 1}</td>
+                                            <td>{formatDate(item.date)}</td>
+                                            <td>{item.setno}</td>
+                                            <td>{item.DesignNo}</td>
+                                            <td>{item.DeliveryNo}</td>
+                                            <td>{item.BeamQuality}</td>
+                                            <td>{item.CustomerName}</td>
+                                            <td>{item.ShadeNo}</td>
+                                            <td>{item.BeamDrawn}</td>
+                                            <td>{item.BeamPending}</td>
+                                            <td>{item.Shortage}</td>
+                                            <td>{item.PreviousAction}</td>
+                                            <td>{item.Remarks}</td>
+                                            <td>
+                                                <Link
+                                                    to='/editdetails'
+                                                    onClick={() => sessionStorage.setItem('DesignNo', item.DesignNo)}
+                                                    className='btn btn-outline-primary'
+                                                >
+                                                    <FcEditImage className='btn btn-primary' />Update
+                                                </Link>
+                                                <button
+                                                    onClick={() => setModalId(item.DesignNo)}
+                                                    className='btn btn-outline-success ms-2'
+                                                >
+                                                    <FcTemplate className='btn btn-success' />Reconcile
+                                                </button>
+                                                <Link
+                                                    to='/packingslip'
+                                                    onClick={() => sessionStorage.setItem('setno', item.setno)}
+                                                    className='btn btn-outline-warning ms-2'
+                                                >
+                                                    <FcPrint className='btn btn-warning' />Packing
+                                                </Link>
+                                                <button
+                                                    onClick={() => handledelete(item.DesignNo)}
+                                                    className='btn btn-outline-danger ms-2'
+                                                >
+                                                    <FcFullTrash className='btn btn-danger' />Delete
+                                                </button>
+                                                <Link
+                                                    to='/feedback'
+                                                    onClick={() => sessionStorage.setItem('DesignNo', item.DesignNo)}
+                                                    className='btn btn-outline-info ms-2'
+                                                >
+                                                    <FcFeedback className='btn btn-info' />Feedback
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {/* Pagination */}
+                        <div className='d-flex justify-content-center mb-4'>
+                            <nav aria-label='Page navigation example'>
+                                <ul className='pagination'>
+                                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                        <button className='page-link' onClick={firstPage}>
+                                            First
+                                        </button>
+                                    </li>
+                                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                        <button className='page-link' onClick={prePage}>
+                                            Previous
+                                        </button>
+                                    </li>
+                                    {numbers.map((number, index) => (
+                                        <li key={index} className={`page-item ${number === currentPage ? 'active' : ''}`}>
+                                            <button className='page-link' onClick={() => changeCPage(number)}>
+                                                {number}
+                                            </button>
+                                        </li>
+                                    ))}
+                                    <li className={`page-item ${currentPage === npage ? 'disabled' : ''}`}>
+                                        <button className='page-link' onClick={nextPage}>
+                                            Next
+                                        </button>
+                                    </li>
+                                    <li className={`page-item ${currentPage === npage ? 'disabled' : ''}`}>
+                                        <button className='page-link' onClick={lastPage}>
+                                            Last
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default BeamInwardReport;

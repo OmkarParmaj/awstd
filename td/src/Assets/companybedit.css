@@ -1,0 +1,10 @@
+@media (max-width: 600px) {
+    .mobilecompanydetails {
+        font-size: 10px;
+    }
+}
+
+
+.companybeditmobile {
+    height: 1000px;
+}

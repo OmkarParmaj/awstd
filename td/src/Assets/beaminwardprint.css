@@ -1,0 +1,24 @@
+@media (max-width: 600px) {
+    .mobilefor {
+        margin-left: 200px;
+    }
+    .companymobilelast {
+        padding-left: 200px;
+    }
+}
+
+
+
+
+@media (min-width: 600px) {
+    .mobilefor {
+        text-align: end;
+        margin-right: 80px;
+    }
+    .companymobilelast {
+        text-align: end;
+    }
+    .pattern {
+        margin-left: 20px;
+    }
+}

@@ -1,0 +1,10 @@
+@media print {
+    .maincontainer {
+        display: none;
+    }
+
+    .printcontainer {
+        visibility: visible;
+        font-size: 11px;
+    }
+}

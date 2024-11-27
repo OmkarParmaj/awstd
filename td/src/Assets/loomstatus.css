@@ -1,0 +1,12 @@
+.loomstatusmain {
+    height: 1500px;
+}
+
+
+
+
+@media (max-width: 600px) {
+    .mobilebuttonloomstatus {
+        margin-top: 20px;
+    }
+}

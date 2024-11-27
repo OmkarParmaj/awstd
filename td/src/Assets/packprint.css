@@ -1,0 +1,65 @@
+@media (max-width: 600px) {
+    .packingfor {
+        margin-left: 250px;
+    }
+
+    .packprintsourabh {
+        margin-left: 200px;
+    }
+
+    .lastmobile {
+        margin-bottom: 30px;
+    }
+
+    .companymobile {
+        font-size: 15px;
+    }
+
+    .addressmobile {
+        font-size: 10px;
+    }
+
+    .mailmobile {
+        font-size: 10px;
+    }
+
+    .gstmobile {
+        font-size: 10px;
+    }
+
+    .logomobile {
+        width: 90px;
+        height: 90px;
+    }
+
+    .mobileqrcode {
+        padding-left: 40px;
+        padding-top: 22px;
+    }
+
+    .partydetailsmobile {
+        font-size: 12px;
+    }
+}
+
+
+@media (min-width: 600px) {
+    .computerqrcode {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    /* .computertable {
+        width: 80%;
+        margin-left: 50px;
+       
+    }
+
+    .computertablerow {
+        display: flex;
+        justify-content: center;
+    } */
+
+   
+}

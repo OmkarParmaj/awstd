@@ -1,0 +1,1 @@
+<img src={`http://localhost:4000/omkarparmaj/${maaaid}`} style={{ maxWidth: 250, maxHeight: 90 }} alt={`Image ${maaaid}`} />

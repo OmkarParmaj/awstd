@@ -1,0 +1,29 @@
+{
+  "name": "textilediwanji",
+  "version": "1.0.0",
+  "description": "It is a textile diwanji web application for textile weavers",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Omkar Parmaj",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.9.13",
+    "nodemon": "^3.0.3",
+    "pm2": "^5.4.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

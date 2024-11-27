@@ -1,0 +1,30 @@
+@media (max-width: 600px) {
+    .banksettingmobile {
+        margin-top: 20px;
+ 
+    }
+
+    .partysettingmobile {
+        margin-top: 20px;
+ 
+    }
+
+    .shiftsettingmobile {
+        margin-top: 20px;
+ 
+    }
+
+    .passwordrecoverymobile {
+        margin-top: 20px;
+ 
+    }
+
+    .profilesettingmobile {
+        margin-top: 20px;
+
+    } 
+
+    .mainrowmobile {
+        margin-top: 0px;
+    }
+}

@@ -1,0 +1,210 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+.sideone {
+    /* height: 728px !important; */
+    position: fixed;
+    /* display: flex !important; */
+    border: none;
+    max-height: auto !important;
+    overflow-x: auto !important;
+
+}
+
+
+.mine {
+    height: 728px !important;
+    width: 256px !important;
+    background-color: white;
+
+}
+
+.mobilesidebar {
+    display: none;
+}
+
+
+.togglebutton {
+    display: none;
+}
+
+.closebutton {
+    display: none;
+}
+
+.dashboardbutton {
+    width: 100%;
+    background-color: white;
+    color: black;
+    border: none;
+    text-align: start;
+    padding-left: 18px;
+}
+
+.dashboardbutton:hover {
+    background-color: #bcd3c9;
+    color: black;
+}
+
+.button1 {
+    width: 100%;
+    background-color: white;
+    color: black;
+    border: none;
+    text-align: start;
+    padding-left: 18px;
+    width: 95%;
+}
+
+.button1:hover {
+    background-color: #cddcf0;
+    color: black;
+
+}
+
+.button2 {
+    width: 100%;
+    background-color: white;
+    color: black;
+    border: none;
+    text-align: start;
+    padding-left: 18px;
+    width: 95%;
+}
+
+.button2:hover {
+    background-color: #cddcf0;
+    color: black;
+}
+
+
+
+.collapsecard {
+    background-color: white !important;
+
+}
+
+.togglebutton {
+    display: none;
+}
+
+.chartcard {
+    /* background: #F8F9FA; */
+    border: none;
+}
+
+@media (min-width: 600px) {
+    
+    .menubuttonformobilesidebar {
+        display: none;
+    }
+
+    .togglebutton {
+        display: none;
+    }
+
+    .computerheader {
+        display: flex;
+        justify-content: end;
+        background-color: white;
+        height: 60px;
+
+    }
+
+   
+
+    .rightone {
+        background: #F7F7FF;
+        margin-left: 286px;
+        border: none;
+        /* height: 1000px; */
+        /* width: 100%; */
+    }
+
+    
+    .chartcard:hover {
+        box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 2px 3px -8px rgba(0, 0, 0, 0.05);
+        transition: 0.2s;
+    }
+
+    .circlecard:hover {
+        box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 2px 3px -8px rgba(0, 0, 0, 0.05);
+        transition: 0.2s;
+    }
+
+    .avatar {
+        border: 1px solid black;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .avatarphoto{
+        width: 40px;
+        height: 40px;
+    }
+    .tdlogo {
+        width: 200px;
+        height: 50px;
+        margin-top: 30px;
+        /* margin-bottom: 40px; */
+    }
+}
+
+@media (max-width: 600px) {
+    .sideone {
+        display: none !important;
+        position: relative;
+    }
+
+   
+
+
+    .rightone {
+        position: absolute;
+        background: #F7F7FF !important;
+    }
+
+
+    .mine {
+        display: none;
+    }
+
+    .avtarmobile {
+        margin-left: 200px;
+    }
+
+    .column2 {
+        margin-top: 15px;
+    }
+
+    .column3 {
+        margin-top: 15px;
+    }
+
+    .column4 {
+        margin-top: 15px;
+    }
+
+    .chartcard:hover {
+        box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 2px 3px -8px rgba(0, 0, 0, 0.05);
+        transition: 0.2s;
+    }
+
+    .circlecard:hover {
+        box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1), 0 2px 3px -8px rgba(0, 0, 0, 0.05);
+        transition: 0.2s;
+    }
+    .avatar {
+        display: none;
+    }
+
+    .avatarphoto {
+        display: none;
+    }
+}

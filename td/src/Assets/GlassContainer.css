@@ -1,0 +1,17 @@
+/* GlassContainer.css */
+.glass-container {
+  position: fixed; /* Fixed positioning to cover the entire viewport */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  backdrop-filter: blur(10px); /* Glass blur effect */
+  border-radius: 10px; /* Optional: rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  z-index: 1000; /* Ensure it appears above other content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

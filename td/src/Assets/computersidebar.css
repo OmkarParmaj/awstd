@@ -1,0 +1,4 @@
+.computersidebarmycss {
+    max-height: calc(100vh - 10px); /* Adjust 80px to match your sidebar header height */
+    overflow-y: auto;
+}

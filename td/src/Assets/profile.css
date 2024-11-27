@@ -1,0 +1,13 @@
+@media (max-width: 600px) {
+    .profilemobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 600px) {
+    .profilemobile {
+        display: flex !important;
+        justify-content: end !important;
+        align-items:  center !important;
+    }
+}

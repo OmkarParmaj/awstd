@@ -1,0 +1,25 @@
+/* For most browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+
+@media (max-width: 600px) {
+    .scroll {
+        max-height: 1500px;
+        overflow-y: auto;
+       
+        /* border: 1px solid black; */
+    }
+    
+}
+
+
+
+.productionmain {
+    height: 3000px;
+}

@@ -1,0 +1,73 @@
+SELECT *,
+       Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5 AS sum_of_countwt,
+       ((Countwt1 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100) AS countwt1perc,
+       ((Countwt2 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100) AS countwt1perc2,
+       ((Countwt3 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100) AS countwt1perc3,
+       ((Countwt4 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100) AS countwt1perc4,
+       ((Countwt5 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100) AS countwt1perc5,
+
+       COALESCE((((((Pick * width)/(Count1 * 1693.33)) + ((((Pick * width)/(Count1 * 1693.33)) / 100) * 5)) / 100) * (((Countwt1 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) AS totalwtforcount1,
+       COALESCE((((((Pick * width)/(Count2 * 1693.33)) + ((((Pick * width)/(Count2 * 1693.33)) / 100) * 5)) / 100) * (((Countwt2 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) AS totalwtforcount2,
+       COALESCE((((((Pick * width)/(Count3 * 1693.33)) + ((((Pick * width)/(Count3 * 1693.33)) / 100) * 5)) / 100) * (((Countwt3 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) AS totalwtforcount3,
+       COALESCE((((((Pick * width)/(Count4 * 1693.33)) + ((((Pick * width)/(Count4 * 1693.33)) / 100) * 5)) / 100) * (((Countwt4 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) AS totalwtforcount4,
+       COALESCE((((((Pick * width)/(Count5 * 1693.33)) + ((((Pick * width)/(Count5 * 1693.33)) / 100) * 5)) / 100) * (((Countwt5 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) AS totalwtforcount5,
+       
+       
+       
+
+        COALESCE((((((Pick * width)/(Count1 * 1693.33)) + ((((Pick * width)/(Count1 * 1693.33)) / 100) * 5)) / 100) * (((Countwt1 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) +
+       COALESCE((((((Pick * width)/(Count2 * 1693.33)) + ((((Pick * width)/(Count2 * 1693.33)) / 100) * 5)) / 100) * (((Countwt2 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) +
+       COALESCE((((((Pick * width)/(Count3 * 1693.33)) + ((((Pick * width)/(Count3 * 1693.33)) / 100) * 5)) / 100) * (((Countwt3 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) +
+       COALESCE((((((Pick * width)/(Count4 * 1693.33)) + ((((Pick * width)/(Count4 * 1693.33)) / 100) * 5)) / 100) * (((Countwt4 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) +
+       COALESCE((((((Pick * width)/(Count5 * 1693.33)) + ((((Pick * width)/(Count5 * 1693.33)) / 100) * 5)) / 100) * (((Countwt5 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0)  AS totalwt
+
+FROM `beaminward`
+WHERE Email = 'omkarparmaj1@gmail.com' AND SetNo = 4247;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT b.*, 
+       Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5 AS sum_of_countwt,
+       ((Countwt1 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100) AS countwt1perc,
+       ((Countwt2 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100) AS countwt2perc,
+       ((Countwt3 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100) AS countwt3perc,
+       ((Countwt4 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100) AS countwt4perc,
+       ((Countwt5 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100) AS countwt5perc,
+
+       COALESCE((((((b.Pick * b.width)/(b.Count1 * 1693.33)) + ((((b.Pick * b.width)/(b.Count1 * 1693.33)) / 100) * 5)) / 100) * (((Countwt1 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100)))  , 0) AS totalwtforcount1,
+       COALESCE((((((b.Pick * b.width)/(b.Count2 * 1693.33)) + ((((b.Pick * b.width)/(b.Count2 * 1693.33)) / 100) * 5)) / 100) * (((Countwt2 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))), 0) AS totalwtforcount2,
+       COALESCE((((((b.Pick * b.width)/(b.Count3 * 1693.33)) + ((((b.Pick * b.width)/(b.Count3 * 1693.33)) / 100) * 5)) / 100) * (((Countwt3 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))), 0) AS totalwtforcount3,
+       COALESCE((((((b.Pick * b.width)/(b.Count4 * 1693.33)) + ((((b.Pick * b.width)/(b.Count4 * 1693.33)) / 100) * 5)) / 100) * (((Countwt4 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))), 0) AS totalwtforcount4,
+       COALESCE((((((b.Pick * b.width)/(b.Count5 * 1693.33)) + ((((b.Pick * b.width)/(b.Count5 * 1693.33)) / 100) * 5)) / 100) * (((Countwt5 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))), 0) AS totalwtforcount5,
+
+       COALESCE((((((b.Pick * b.width)/(b.Count1 * 1693.33)) + ((((b.Pick * b.width)/(b.Count1 * 1693.33)) / 100) * 5)) / 100) * (((Countwt1 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) +
+       COALESCE((((((b.Pick * b.width)/(b.Count2 * 1693.33)) + ((((b.Pick * b.width)/(b.Count2 * 1693.33)) / 100) * 5)) / 100) * (((Countwt2 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) +
+       COALESCE((((((b.Pick * b.width)/(b.Count3 * 1693.33)) + ((((b.Pick * b.width)/(b.Count3 * 1693.33)) / 100) * 5)) / 100) * (((Countwt3 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) +
+       COALESCE((((((b.Pick * b.width)/(b.Count4 * 1693.33)) + ((((b.Pick * b.width)/(b.Count4 * 1693.33)) / 100) * 5)) / 100) * (((Countwt4 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) +
+       COALESCE((((((b.Pick * b.width)/(b.Count5 * 1693.33)) + ((((b.Pick * b.width)/(b.Count5 * 1693.33)) / 100) * 5)) / 100) * (((Countwt5 / (Countwt1 + Countwt2 + Countwt3 + Countwt4 + Countwt5)) * 100))) * 1287, 0) AS totalwt,
+       
+           SUM(p.toalmtr) AS totalmtrpack
+
+      
+
+FROM beaminward b
+LEFT JOIN packingslip p ON b.DesignNo = p.DesignNo
+WHERE b.Email = 'omkarparmaj1@gmail.com' AND b.SetNo = 4247
+GROUP BY b.DesignNo, b.Email, b.SetNo, b.Countwt1, b.Countwt2, b.Countwt3, b.Countwt4, b.Countwt5, b.Pick, b.width;

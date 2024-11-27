@@ -1,0 +1,22 @@
+@media print {
+
+
+    .maincontainer {
+        display: none;
+    }
+
+.printcontainer {
+    visibility: visible !important;
+  
+
+   
+}
+
+
+
+
+
+
+
+
+}

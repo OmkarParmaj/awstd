@@ -1,0 +1,80 @@
+.beaminwardreportcard {
+    width: 280px;
+    height: 150px;
+    background: #9d6ebe;
+    border-radius: 15px;
+    box-shadow: rgb(0,0,0,0.3) 5px 1px 10px ,rgb(0,0,0,0.3) -5px 0px 250px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    background: linear-gradient(to right,#9d6ebe, #9a61c2);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .beaminwardreportcard:hover {
+    box-shadow: rgb(0,0,0) 5px 10px 50px ,rgb(0,0,0) -5px 0px 250px;
+  }
+  
+  .time-text {
+    font-size: 50px;
+    margin-top: 0px;
+    margin-left: 15px;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .time-sub-text {
+    font-size: 15px;
+    margin-left: 5px;
+  }
+  
+  .day-text {
+    font-size: 18px;
+    margin-top: 0px;
+    margin-left: 15px;
+    font-weight: 500;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .moon {
+    font-size: 20px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .beaminwardreportcard:hover > .moon {
+    font-size: 23px;
+  }
+  
+
+
+
+  @media (max-width: 600px) {
+    .bir1 {
+      margin-top: 30px;
+    }
+  }
+
+
+
+
+  @media (min-width: 600px) {
+    .loomcard {
+     object-fit: cover;
+     height: 200px;
+    }
+    .myimage {
+      object-fit: cover;
+    }
+  }
+
+ .printone {
+  height: 25px;
+  width: 25px;
+ }

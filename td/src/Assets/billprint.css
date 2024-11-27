@@ -1,0 +1,38 @@
+@media (max-width: 600px) {
+    .mobilebillfor {
+        margin-left: 40px;
+        font-size: 13px;
+    }
+
+    .mobilebillcompanyname {
+        margin-left: 25px;
+        font-size: 13px;
+    }
+    .mobilepartydetails {
+        font-size: 11px;
+    }
+    .mobiledec {
+        font-size: 11px;
+    }
+}
+
+
+
+@media (min-width: 600px) {
+    .computerbillfor {
+       text-align: end;
+       margin-right: 80px;
+    }
+
+    .computerbillcompanyname {
+       text-align: end;
+    }
+
+    .computerpartydetails {
+        font-size: 15px;
+    }
+
+    .computertable {
+        height: 500px;
+    }
+}

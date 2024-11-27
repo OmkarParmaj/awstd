@@ -1,0 +1,61 @@
+@media print {
+
+    /* body * {
+        visibility: hidden;
+    } */
+    .printcontaineromkar,
+    .printcontaineromkar * {
+        visibility: visible !important;
+        /* display: flex; */
+        font-size: 11px;
+        /* display: flex; */
+    }
+
+    .tablehide {
+      display: none !important;
+    }
+
+    .divToPrint {
+        /* position: absolute; */
+        left: 0;
+        top: 0;
+
+    }
+
+   .maincontaineromkar {
+        display: none;
+    }
+
+    .rightone {
+        background: none;
+        margin-left: 0px;
+        height: 100% !important;
+        width: 100%;
+
+
+    }
+
+    .updateone,
+    .updatetwo
+    {
+        display: none !important;
+    }
+
+    .companyname {
+        display: flex !important;
+    }
+   
+
+    .printbutton {
+        display: none;
+    }
+
+    .loomstatusmain {
+        background: none;
+        margin-left: 0px;
+
+    }
+
+   
+
+}

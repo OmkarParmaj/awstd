@@ -1,0 +1,124 @@
+@media (max-width: 600px) {
+    .beaminwardreconsilation {
+        margin-top: 20px;
+
+    }
+
+    .yarninwardreconsilation {
+        margin-top: 20px;
+
+    }
+
+    .fabricoutwardreconsilation {
+        margin-top: 20px;
+
+    }
+
+    .summaryreconsilation {
+        margin-top: 20px;
+
+    }
+
+    .companyname {
+        font-size: 18px;
+    }
+
+   .for {
+    padding-left: 193px;
+   }
+
+   .sourabhtextile {
+    padding-left: 210px;
+   }
+
+   .mobilecontainer {
+    margin-bottom: 40px;
+   }
+
+   .companyname {
+    text-align: center;
+
+}
+
+.companyaddress {
+    text-align: center;
+
+}
+
+.companyphoneno {
+    text-align: center;
+
+}
+
+.companygst {
+    text-align: center;
+
+}
+
+
+}
+
+
+
+@media (min-width: 600px) {
+    .summary2computerrow {
+        margin: 10px;
+
+    }
+
+    .summarycomputerrow {
+        margin: 10px;
+
+    }
+
+    .billingcomputerrow {
+        margin: 10px;
+
+    }
+
+    .fabricoutwardcomputerrow {
+        margin: 10px;
+
+    }
+
+    .yarninwardcomputerrow {
+        margin: 10px;
+
+    }
+
+    .beaminwardcomputerrow {
+        margin: 10px;
+
+    }
+
+    .for {
+        /* padding-left:  368px; */
+        text-align: end;
+        margin-right: 84px;
+    }
+
+    .sourabhtextile {
+        /* padding-left: 380px; */
+        text-align: end;
+    }
+
+    .companyname {
+        text-align: center;
+
+    }
+
+    .companyaddress {
+        text-align: center;
+
+    }
+
+    .companyphoneno {
+        text-align: center;
+
+    }
+
+    .companygst {
+        text-align: center;
+
+    }
+}
